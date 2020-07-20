@@ -1,0 +1,21 @@
+{
+  "name": "socket-circles-example",
+  "version": "0.0.1",
+  "description": "le socket.io app",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^7.8.1",
+    "firebase-admin": "^8.9.2",
+    "nodemon": "^2.0.2",
+    "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "devDependencies": {
+    "@types/express": "^4.17.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

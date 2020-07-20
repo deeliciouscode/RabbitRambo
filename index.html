@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="shortcut icon" href="#" />
+    <title>Rabbit Rambo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="jingle" loop>
+        <source src="rabbit-rambo-jingle.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <style>
+
+    </style>
+    <script src="gameClient.js" type="module"></script>
+    <div class="container" id="menu">
+        <div class="inner-container">
+            <div>
+                <img class="logo" src="/Assets/logo.png" alt="">
+            </div>
+        </div>
+        <div class="inner-container">
+            <h1>CONTROLS</h1>
+            <div>
+                <img src="/Assets/professorUpDown.gif" alt=""
+                    style="position: absolute; top: 115%; left: 80%; height: 60%">
+                <div class="controls-container">
+
+                    <div class="controls-table">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="/Assets/keyA.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4>GO LEFT</h4>
+                                    </td>
+                                    <td>
+                                        <img src="/Assets/keyD.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4>GO RIGHT</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="/Assets/key1.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4 class="right-h">ITEM 1</h4>
+                                    </td>
+                                    <td>
+                                        <img src="/Assets/key2.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4 class="right-h">ITEM 2</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="/Assets/keyM.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4>PLACE MINE</h4>
+                                    </td>
+                                    <td>
+                                        <img src="/Assets/keyH.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4 class="right-h">SHOOT</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="/Assets/keySpace.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4>JUMP</h4>
+                                    </td>
+                                    <td>
+                                        <img src="/Assets/keyL.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4>LASER</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td><td></td>
+                                    <td>
+                                        <img src="/Assets/keyP.png" alt="" class="controls-img">
+                                    </td>
+                                    <td>
+                                        <h4>PAUSE</h4>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="inner-container">
+            <div>
+                <div style="padding-bottom: 3%">
+                    <label for="username">Your Name</label><br>
+                    <input type="text" id="setUserName" name="username" placeholder="Your Username">
+                </div>
+                <div style="padding-bottom: 3%">
+                    <p style="padding-bottom: 0.5%">Your Rabbit</p style="padding-bottom: 3%">
+                    <label>
+                        <input type="radio" name="rabbits" id="rabbit_white" value="white" checked>
+                        <img src="/Assets/rabbit_white.png" class="img-rabbit">
+                    </label>
+                    <label>
+                        <input type="radio" name="rabbits" id="rabbit_blue" value="blue">
+                        <img src="/Assets/rabbit_blue.png" class="img-rabbit">
+                    </label>
+                    <label>
+                        <input type="radio" name="rabbits" id="rabbit_green" value="green">
+                        <img src="/Assets/rabbit_green.png" class="img-rabbit">
+                    </label>
+                    <label>
+                        <input type="radio" name="rabbits" id="rabbit_purple" value="purple">
+                        <img src="/Assets/rabbit_purple.png" class="img-rabbit">
+                    </label>
+                    <label>
+                        <input type="radio" name="rabbits" id="rabbit_yellow" value="yellow">
+                        <img src="/Assets/rabbit_yellow.png" class="img-rabbit">
+                    </label>
+                </div>
+                <div style="padding-bottom: 3%">
+                    <p style="padding-bottom: 0.5%">Your Level</p style="padding-bottom: 3%">
+                    <label>
+                        <input type="radio" name="levels" id="levelA" checked>
+                        <img src="/Assets/levelAsmall.png" class="img-level">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="levels" id="levelB">
+                        <img src="/Assets/levelBsmall.png" class="img-level">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="levels" id="levelC">
+                        <img src="/Assets/levelCsmall.png" class="img-level">
+                    </label>
+                </div>
+                <button class="btn " id="clickableBtn">Join</button>
+            </div>
+        </div>
+    </div>
+    <div class="pause-container " id="pauseMenu">
+        <div>
+            <h2>GAME PAUSED!</h2>
+        </div>
+        <div>
+            <button class="btn" id="continueGame">Continue</button>
+        </div>
+    </div>
+    <div class="con-gameover" id="gameover">
+        <div class="inner-gameover">
+            <h1>
+                GAME OVER!
+            </h1>
+        </div>
+    </div>
+    <div id="lb">
+        <div class="lb-container">
+            <div class="lb-head">
+                <h1 id="leaderBoardTitle"></h1>
+            </div>
+            <div class="lb-table">
+                <table id="lbTable">
+                    <thead>
+                        <th>Ranking</th>
+                        <th>Names</th>
+                        <th>Killed</th>
+                        <th>Round</th>
+                        <th>Score</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="itemContainer">
+        <div class="itemText" id="roundCompleted"></div>
+        <div class="itemText" id="boostText"></div>
+        <div class="itemText" id="boostCounter"></div>
+    </div>
+    <div class="fullscreen-block" id="waitingForPartner">
+        <div class="fullscreen-inner-container">
+            <div>
+                Waiting for your partner...
+            </div>
+            <div>
+                <button class="btn" id="backToMenu">Back To Menu</button>
+            </div>
+        </div>
+    </div>
+    <div class="fullscreen-block" id="roomIsFull">
+        <div class="fullscreen-inner-container">
+            <div>
+                Already 2 players in game! Please wait until their game is over.
+            </div>
+            <div>
+                <button class="btn" id="backToMenu">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-container" id="game-is-hidden">
+        <div class="status-bar " id="statusBar">
+            <div class="killed-enemies" id="enemyCounter"></div>
+            <div class="score" id="scoreCounter"></div>
+            <div class="round" id="roundCounter"></div>
+        </div>
+
+        <canvas style="margin: auto;" id="myCanvas" style="border: 1px solid #ccc" class="game"></canvas>
+    </div>
+
+</body>
+
+</html>
