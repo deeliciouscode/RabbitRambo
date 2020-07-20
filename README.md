@@ -10,6 +10,8 @@ are the strongest he produced yet.
 
 How to start the game:
 
+## WARNING: Firebase does not work out of the box, because the keys/ folder is not there and thus does not contain [firebase-key].json! 
+
 - from the root folder 
     1. run "npm install"
     2. run "npm start" 
